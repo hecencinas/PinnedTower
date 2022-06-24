@@ -7,14 +7,15 @@
 static class PINNEDTOWER_API Random
 {
 public:
-    static float NextFloat(float high, float low)
+    static float NextInt(int low, int high)
     {
         if (!Seeded)
         {
             srand(time(NULL));
             Seeded = true;
         }
-        return (rand() % int(high - low)) + low;
+        if (high - low == 0) return 0;
+        return (rand() % (high - low)) + low;
     }
     static bool Seeded;
 };

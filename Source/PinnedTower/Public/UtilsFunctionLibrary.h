@@ -19,5 +19,7 @@ public:
 	UFUNCTION(BlueprintCallable, Category="Random")
 	static TSubclassOf<AActor> RandomActorWithWeight(TMap<TSubclassOf<AActor>, float> possibleActors);
 
+	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Random")
+	static int RandomNextInt(int low, int high);
 
 };

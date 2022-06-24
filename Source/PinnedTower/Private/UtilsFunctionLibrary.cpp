@@ -11,7 +11,7 @@ TSubclassOf<AActor> UUtilsFunctionLibrary::RandomActorWithWeight(TMap<TSubclassO
 	float totalWeight = 0;
 	for (const TPair<TSubclassOf<AActor>, float>& actorWeight : possibleActors) { totalWeight += actorWeight.Value; }
 	
-	float randomWeight = Random::NextFloat(totalWeight, 0);
+	float randomWeight = Random::NextInt(0, totalWeight);
 
 	float curWeight = randomWeight;
 	for (const TPair<TSubclassOf<AActor>, float>& actorWeight : possibleActors)
@@ -22,5 +22,10 @@ TSubclassOf<AActor> UUtilsFunctionLibrary::RandomActorWithWeight(TMap<TSubclassO
 
 
 	return possibleActors.begin().Key();
+}
+
+int UUtilsFunctionLibrary::RandomNextInt(int low, int high)
+{
+	return Random::NextInt(low, high);
 }
 
